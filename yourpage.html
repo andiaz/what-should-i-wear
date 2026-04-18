@@ -11,8 +11,11 @@
 <body>
   <script>
     (function() {
+      if (sessionStorage.getItem("authed") === "1") return;
       var p = prompt("Ange lösenord:");
-      if (p !== "andreasforever") {
+      if (p === "andreasforever") {
+        sessionStorage.setItem("authed", "1");
+      } else {
         document.documentElement.innerHTML = "<body><h1>Åtkomst nekad</h1></body>";
       }
     })();
