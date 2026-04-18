@@ -1,0 +1,11 @@
+{
+  "rules": {
+    'block-closing-brace-newline-before': 'always',
+    'block-opening-brace-space-before': 'always',
+    'declaration-colon-space-after': 'always',
+    'indentation': 2,
+    'selector-no-id': true,
+    'selector-list-comma-newline-after': 'always',
+    'rule-non-nested-empty-line-before': ['always', { ignore: ['after-comment'], }],
+  }
+}

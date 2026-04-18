@@ -1,0 +1,456 @@
+@import url('foundation.min.css');
+@import url('animate.css');
+
+/* ===========================
+   Susannas Kläder — Warm Scandinavian
+   Design: clean, confident, tactile
+   =========================== */
+
+/* --- Base & Typography --- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 56px; /* account for sticky nav */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #FDF6E3;
+  color: #021319;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Skip Link (a11y) --- */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: #890620;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  z-index: 1000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* --- Screen reader only --- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --- Focus Indicators (a11y WCAG 2.4.7) --- */
+
+:focus-visible {
+  outline: 3px solid #B5243E;
+  outline-offset: 2px;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --- Navigation --- */
+
+.contain-to-grid {
+  background: #021319;
+}
+
+.top-bar {
+  background: #021319;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.top-bar .title-area .name h1 a {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 16px;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+  background: #021319;
+  color: #fff;
+  padding: 0 12px;
+  font-size: 14px;
+  line-height: 48px;
+  min-height: 48px;
+  transition: background-color 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover,
+.top-bar-section li:not(.has-form) a:not(.button):focus {
+  background: #B5243E;
+  color: #fff;
+}
+
+.top-bar-section li:not(.has-form) a[aria-current="page"]:not(.button) {
+  background: #890620;
+  color: #fff;
+}
+
+/* --- Hero Section --- */
+
+.hero-section {
+  background: linear-gradient(135deg, #890620 0%, #6b0419 100%);
+  border: 0;
+  padding: 48px 0;
+}
+
+.hero-panel {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+#header-main {
+  margin-top: 48px;
+  color: #FFFCF6;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.image-hero {
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.image-hero:hover {
+  transform: scale(1.03);
+}
+
+/* --- Panels / Cards --- */
+
+.panel {
+  background: #FFFFFF;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  min-height: 200px;
+  transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.panel.darkblue,
+.panel.hero-panel {
+  box-shadow: none;
+  border-radius: 0;
+  min-height: auto;
+  padding: 16px;
+}
+
+.panel.darkblue:hover,
+.panel.hero-panel:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, .panel dl {
+  color: #021319;
+}
+
+.panel h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.panel h3 img {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.panel p {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #1a1a2e;
+}
+
+/* --- Main Content Area --- */
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+#outfit_content {
+  padding: 0 16px;
+}
+
+#outfit_content .columns {
+  margin-bottom: 24px;
+}
+
+/* --- Stats Section --- */
+
+.stats-empty {
+  text-align: center;
+  padding: 64px 32px;
+  color: #555;
+  font-size: 18px;
+}
+
+.stats-summary {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 32px;
+}
+
+.stats-summary h2 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.stats-summary p {
+  font-size: 18px;
+  color: #333;
+}
+
+.stats-filter {
+  margin: 16px 0;
+}
+
+.stats-filter label {
+  font-weight: 600;
+  font-size: 15px;
+  margin-right: 8px;
+}
+
+.stats-filter select {
+  display: inline-block;
+  width: auto;
+  min-width: 120px;
+  padding: 8px 12px;
+  font-size: 15px;
+  font-family: inherit;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  color: #021319;
+  cursor: pointer;
+  transition: border-color 200ms;
+}
+
+.stats-filter select:focus-visible {
+  border-color: #B5243E;
+  outline: 3px solid #B5243E;
+  outline-offset: 2px;
+}
+
+.stats-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.stats-card {
+  border-left: 4px solid #890620;
+  margin-bottom: 24px;
+}
+
+.stats-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #890620;
+  margin-bottom: 16px;
+}
+
+/* --- Stats Tables --- */
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.stats-table thead th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  padding: 8px 12px;
+  border-bottom: 2px solid #eee;
+}
+
+.stats-table thead th:last-child {
+  text-align: right;
+}
+
+.stats-table tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.stats-table .alt-row {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.stats-count {
+  text-align: right;
+}
+
+.stats-table tfoot td {
+  padding: 12px 12px 8px;
+  border-top: 2px solid #eee;
+}
+
+.badge {
+  display: inline-block;
+  background: #FDF6E3;
+  border-radius: 9999px;
+  padding: 2px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* --- Buttons --- */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 32px;
+  background: #890620;
+  color: #fff;
+  border: 2px solid #890620;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.btn-primary:hover {
+  background: #B5243E;
+  border-color: #B5243E;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 32px;
+  background: transparent;
+  color: #890620;
+  border: 2px solid #890620;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              color 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.btn-ghost:hover {
+  background: #890620;
+  color: #fff;
+}
+
+/* --- Reduced Motion (a11y WCAG 2.3.3) --- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Responsive --- */
+
+@media only screen and (max-width: 640px) {
+  #header-main {
+    margin-top: 16px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .hero-section {
+    padding: 24px 0;
+  }
+
+  .image-hero {
+    max-width: 120px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .panel {
+    padding: 24px 16px;
+    min-height: auto;
+    margin-bottom: 16px;
+  }
+
+  .stats-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stats-table {
+    font-size: 14px;
+  }
+
+  .stats-table thead th,
+  .stats-table tbody td,
+  .stats-table tfoot td {
+    padding: 6px 8px;
+  }
+}

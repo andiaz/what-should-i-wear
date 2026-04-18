@@ -1,0 +1,73 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Susannas Kläder</title>
+  <script src="js/vendor/modernizr.js"></script>
+  <link rel="stylesheet" href="css/my.css" />
+</head>
+<body>
+  <script>
+    (function() {
+      var p = prompt("Ange lösenord:");
+      if (p !== "andreasforever") {
+        document.documentElement.innerHTML = "<body><h1>Åtkomst nekad</h1></body>";
+      }
+    })();
+  </script>
+
+  <div class="contain-to-grid sticky">
+    <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+      <ul class="title-area">
+        <li class="name">
+          <h1 id="main_header"><a href="index.html">Susannas kläder</a></h1>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="left">
+          <li class="divider"></li>
+          <li class="has-dropdown">
+            <a href="index.html">Skapa outfit</a>
+            <ul class="dropdown">
+              <li><a href="index.html">Komplett outfit</a></li>
+              <li><a href="index.html?outfit=pants">Endast byxor</a></li>
+              <li><a href="index.html?outfit=skirt">Endast kjol</a></li>
+              <li><a href="index.html?outfit=dress">Endast klänning</a></li>
+              <li><a href="index.html?outfit=linne">Endast linne</a></li>
+              <li><a href="index.html?outfit=shirt">Endast skjorta</a></li>
+              <li><a href="index.html?outfit=tee_shirt">Endast T-shirt</a></li>
+              <li><a href="index.html?outfit=sweater">Endast tunn tröja</a></li>
+              <li><a href="index.html?outfit=thick_sweater">Endast tjock tröja</a></li>
+              <li><a href="index.html?outfit=fancy_cloth">Endast finkläder</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+  <section class="darkblue">
+    <div class="row">
+      <div class="medium-3 columns">
+        <div class="panel darkblue">
+          <a href="index.html"><img src="img/susanna.png"></a>
+        </div>
+      </div>
+      <div class="medium-9 columns">
+        <div class="panel darkblue">
+          <h1 id="header-main">Susannas Kläder</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="row" data-equalizer="" id="outfit_content">
+  </div>
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script>
+  $(document).foundation();
+  </script>
+  <script src="js/wear.js"></script>
+  
