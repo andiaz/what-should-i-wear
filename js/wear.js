@@ -59,7 +59,8 @@ function trackSelection(category, itemName) {
     if (!stats[category][itemName]) {
       stats[category][itemName] = {};
     }
-    stats[category][itemName][year] = (stats[category][itemName][year] || 0) + 1;
+    stats[category][itemName][year] =
+      (stats[category][itemName][year] || 0) + 1;
     localStorage.setItem('susanna-stats', JSON.stringify(stats));
   } catch (e) {
     // localStorage unavailable — silently skip
@@ -78,9 +79,7 @@ function getRandomPants(season) {
       'Mörkgrå jeansen',
       'Jeansen med dragkedjor',
       'Grå jeansen',
-      'Svarta byxorna, knäppning bak',
       'Blå MQ byxorna',
-      'Baggy byxorna',
       "Levi's jeansen svarta",
       'Svarta jeansen med hög midja',
       'Andreas jeans',
@@ -98,7 +97,6 @@ function getRandomPants(season) {
     ];
   } else {
     pants = [
-      'Baggy jeansen',
       'Svarta halvkorta shortsen',
       'Jeans shortsen nya',
       'Jeans shortsen gamla',
@@ -113,7 +111,6 @@ function getRandomPants(season) {
       'Svarta Levis jeansen',
       'Shorts med tröja',
       'Mörkgrå jeansen',
-      'Svarta byxorna knäppning bak',
       'Jeans shortsen från Polen',
       'G-Star jeansen',
       'Svarta shortsdressen',
@@ -747,9 +744,16 @@ function loadApplication() {
 // --- Stats, CSV export, and view toggle ---
 
 var categoryOrder = [
-  'Byxor', 'Klänningar', 'Tröjor', 'Tjocka tröjor',
-  'Skjortor', 'T-shirts', 'T-shirts/Linnen', 'Linnen',
-  'Kjolar', 'Finkläder',
+  'Byxor',
+  'Klänningar',
+  'Tröjor',
+  'Tjocka tröjor',
+  'Skjortor',
+  'T-shirts',
+  'T-shirts/Linnen',
+  'Linnen',
+  'Kjolar',
+  'Finkläder',
 ];
 
 var currentStatsFilter = 'all';
@@ -787,7 +791,9 @@ function getItemCount(yearData, filterYear) {
   }
   if (filterYear === 'all') {
     var total = 0;
-    for (var y in yearData) { total += yearData[y]; }
+    for (var y in yearData) {
+      total += yearData[y];
+    }
     return total;
   }
   return yearData[filterYear] || 0;
@@ -807,15 +813,27 @@ function showStats() {
   var filter = currentStatsFilter;
 
   // Build year filter bar
-  var filterHtml = '<div class="stats-filter"><label for="year-filter">Visa period:</label> ' +
+  var filterHtml =
+    '<div class="stats-filter"><label for="year-filter">Visa period:</label> ' +
     '<select id="year-filter" onchange="setStatsFilter(this.value)">' +
-    '<option value="all"' + (filter === 'all' ? ' selected' : '') + '>Alla</option>';
+    '<option value="all"' +
+    (filter === 'all' ? ' selected' : '') +
+    '>Alla</option>';
   for (var y = years.length - 1; y >= 0; y--) {
-    filterHtml += '<option value="' + years[y] + '"' + (filter === years[y] ? ' selected' : '') + '>' + years[y] + '</option>';
+    filterHtml +=
+      '<option value="' +
+      years[y] +
+      '"' +
+      (filter === years[y] ? ' selected' : '') +
+      '>' +
+      years[y] +
+      '</option>';
   }
   filterHtml += '</select></div>';
 
-  var keys = categoryOrder.filter(function (k) { return stats[k]; });
+  var keys = categoryOrder.filter(function (k) {
+    return stats[k];
+  });
   if (keys.length === 0) {
     section.innerHTML =
       '<div class="row"><div class="medium-12 columns">' +
@@ -837,7 +855,9 @@ function showStats() {
       if (c > 0) counts[itemNames[j]] = c;
     }
 
-    var sorted = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+    var sorted = Object.keys(counts).sort(function (a, b) {
+      return counts[b] - counts[a];
+    });
     if (sorted.length === 0) continue;
 
     var catTotal = 0;
@@ -846,21 +866,35 @@ function showStats() {
       var count = counts[sorted[j]];
       catTotal += count;
       rows +=
-        '<tr' + (j % 2 === 1 ? ' class="alt-row"' : '') + '>' +
-        '<td>' + sorted[j] + '</td>' +
-        '<td class="stats-count"><span class="badge">' + count + ' g\u00e5nger</span></td>' +
+        '<tr' +
+        (j % 2 === 1 ? ' class="alt-row"' : '') +
+        '>' +
+        '<td>' +
+        sorted[j] +
+        '</td>' +
+        '<td class="stats-count"><span class="badge">' +
+        count +
+        ' g\u00e5nger</span></td>' +
         '</tr>';
     }
     grandTotal += catTotal;
 
     html +=
       '<div class="medium-6 columns">' +
-      '<div class="panel stats-card animated fadeInUp" style="animation-delay:' + (i * 60) + 'ms">' +
-      '<h3>' + cat + '</h3>' +
+      '<div class="panel stats-card animated fadeInUp" style="animation-delay:' +
+      i * 60 +
+      'ms">' +
+      '<h3>' +
+      cat +
+      '</h3>' +
       '<table class="stats-table" role="table">' +
       '<thead><tr><th scope="col">Plagg</th><th scope="col">Vald</th></tr></thead>' +
-      '<tbody>' + rows + '</tbody>' +
-      '<tfoot><tr><td><strong>Totalt</strong></td><td class="stats-count"><strong>' + catTotal + ' st</strong></td></tr></tfoot>' +
+      '<tbody>' +
+      rows +
+      '</tbody>' +
+      '<tfoot><tr><td><strong>Totalt</strong></td><td class="stats-count"><strong>' +
+      catTotal +
+      ' st</strong></td></tr></tfoot>' +
       '</table></div></div>';
   }
 
@@ -870,13 +904,22 @@ function showStats() {
     '<div class="panel stats-summary">' +
     '<h2>Statistik</h2>' +
     filterHtml +
-    '<p>Totalt antal val (' + periodLabel + '): <strong>' + grandTotal + ' st</strong></p>' +
+    '<p>Totalt antal val (' +
+    periodLabel +
+    '): <strong>' +
+    grandTotal +
+    ' st</strong></p>' +
     '<div class="stats-actions">' +
     '<button type="button" class="btn-primary" onclick="exportCSV()" aria-label="Exportera statistik som CSV-fil">Exportera CSV</button>' +
     '<button type="button" class="btn-ghost" onclick="clearStats()" aria-label="Rensa all statistik">Rensa statistik</button>' +
     '</div></div></div>';
 
-  section.innerHTML = '<div class="row">' + summary + '</div><div class="row" data-equalizer="">' + html + '</div>';
+  section.innerHTML =
+    '<div class="row">' +
+    summary +
+    '</div><div class="row" data-equalizer="">' +
+    html +
+    '</div>';
 }
 
 function exportCSV() {
@@ -895,14 +938,20 @@ function exportCSV() {
       var c = getItemCount(items[itemNames[j]], filter);
       if (c > 0) counts[itemNames[j]] = c;
     }
-    var sorted = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+    var sorted = Object.keys(counts).sort(function (a, b) {
+      return counts[b] - counts[a];
+    });
     for (var j = 0; j < sorted.length; j++) {
-      lines.push(cat + ';"' + sorted[j].replace(/"/g, '""') + '";' + counts[sorted[j]]);
+      lines.push(
+        cat + ';"' + sorted[j].replace(/"/g, '""') + '";' + counts[sorted[j]],
+      );
     }
   }
 
   var suffix = filter === 'all' ? '' : '-' + filter;
-  var blob = new Blob([bom + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  var blob = new Blob([bom + lines.join('\r\n')], {
+    type: 'text/csv;charset=utf-8',
+  });
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
   a.href = url;
@@ -914,10 +963,16 @@ function exportCSV() {
 }
 
 function clearStats() {
-  if (confirm('Vill du verkligen rensa all statistik? Detta g\u00e5r inte att \u00e5ngra.')) {
+  if (
+    confirm(
+      'Vill du verkligen rensa all statistik? Detta g\u00e5r inte att \u00e5ngra.',
+    )
+  ) {
     try {
       localStorage.removeItem('susanna-stats');
-    } catch (e) { /* ignore */ }
+    } catch (e) {
+      /* ignore */
+    }
     showStats();
   }
 }
